@@ -1,175 +1,274 @@
-# 📚 DevBook - Template Site Astro
+Devbook – Portfolio Massyl Ouaddour
 
-## 🎯 Objectifs
+✨ Introduction
 
-Créer un template de site Astro réutilisable avec :
-- Composants modulaires
-- Layout global SEO-friendly  
-- Pages types essentielles
-- Fonctionnalités optionnelles
+Bienvenue sur mon portfolio. Je m'appelle Massyl Ouaddour, je conçois des sites modernes, rapides et accessibles pour les restaurants, maisons d'hôtes et professions libérales. J'utilise la stack Astro pour proposer des sites performants, sans abonnement, que je livre clé-en-main ou avec un système de mise à jour simple.
 
-## 🛠️ Installation et Configuration
+🌐 Structure du Site
 
-### 1. Initialisation du projet
-```bash
-npm create astro@latest
-```
+Accueil (/)
+- Hero section avec accroche percutante
+- Présentation rapide des services
+- Témoignages clients en avant
+- Statistiques de performance
+- CTA principal : "Demander un devis"
+- CTA secondaire : "Voir mes offres"
 
-### 2. Installation de Tailwind CSS
-```bash
-npm install -D @astrojs/tailwind tailwindcss
-```
+Services (/services)
+- Présentation détaillée des 3 formules
+- Comparatif des fonctionnalités
+- FAQ spécifique aux services
+- Témoignages par type de projet
+- CTA : "Choisir une formule"
 
-### 3. Configuration de Tailwind
-- Ajout de l'intégration dans `astro.config.mjs`:
-```js
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+Portfolio (/portfolio)
+- Filtres par type de projet
+- Études de cas détaillées
+- Avant/Après
+- Métriques de performance
+- Témoignages clients
+- CTA : "Voir mon processus"
 
-export default defineConfig({
-  integrations: [tailwind()]
-});
-```
+Processus (/processus)
+- Étapes de création
+- Délais et planning
+- Communication client
+- Livrables
+- Garanties
+- CTA : "Démarrer un projet"
 
-- Création du fichier `tailwind.config.cjs`:
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-```
+À propos (/a-propos)
+- Votre parcours
+- Votre approche
+- Vos valeurs
+- Votre stack technique
+- Vos certifications
+- CTA : "Me contacter"
 
-### 4. Configuration des styles
-- Import de Tailwind dans `src/styles/global.css`:
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+Blog (/blog)
+- Articles sur le web design
+- Conseils pour les TPE
+- Études de cas
+- Actualités du web
+- Ressources gratuites
+- CTA : "S'abonner à la newsletter"
 
-## 🧩 Composants réutilisables (src/components/)
-
-### Header.astro
-- Navbar responsive avec logo et menu
-- Menu hamburger pour mobile
-- Transitions fluides
-- Support du mode sombre
-
-### Footer.astro
-- Liens de navigation
-- Liens vers les réseaux sociaux
-- Mentions légales
-- Newsletter (optionnel)
-
-### Hero.astro
-- Section d'introduction avec texte
-- Call-to-Action (CTA)
-- Image ou illustration
-- Animations au scroll
-
-### Button.astro
-- Bouton stylisé avec Tailwind
-- Support des slots pour le contenu
-- Variants (primary, secondary, outline)
-- États (hover, focus, disabled)
-
-### Card.astro
-- Carte pour services ou témoignages
-- Design moderne et responsive
-- Support des images
-- Animations au hover
-
-### Section.astro
-- Wrapper avec padding
-- Grille responsive
-- Options de background
-- Espacement configurable
-
-## 🧱 Layout global (src/layouts/BaseLayout.astro)
-
-### Configuration SEO
-- Balises meta essentielles
-- Open Graph tags
-- Twitter Cards
-- Sitemap.xml
-
-### Configuration de base
-- `lang="fr"` pour le français
-- Google Fonts via CDN
-- Favicon personnalisé
-- Chargement de global.css
-
-### Structure
-```astro
----
-// BaseLayout.astro
----
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=..." rel="stylesheet">
-    <slot name="head" />
-  </head>
-  <body>
-    <Header />
-    <slot />
-    <Footer />
-  </body>
-</html>
-```
-
-## 📄 Pages types (src/pages/)
-
-### index.astro
-- Landing page avec Hero
-- Sections de présentation
-- Call-to-Action principal
-- Témoignages ou services
-
-### contact.astro
+Contact (/contact)
 - Formulaire de contact
-- Intégration Netlify Forms
-- Validation des champs
-- Message de confirmation
+- Calendrier de rendez-vous
+- FAQ rapide
+- Coordonnées
+- CTA : "Prendre rendez-vous"
 
-### mentions-legales.astro
-- Mentions légales
+Mentions légales (/mentions-legales)
+- Informations légales
 - Politique de confidentialité
 - Conditions d'utilisation
-- Informations légales
+- RGPD
 
-### 404.astro
-- Page d'erreur 404 stylisée
-- Message d'erreur explicatif
-- Lien de retour à l'accueil
-- Design cohérent avec le site
+🏠 Exemple de réalisation démo : Luna Rossa
 
-## 🗂️ Structure du projet
-/src
-  /components
-    Header.astro
-    Footer.astro
-    Button.astro
-    Hero.astro
-  /layouts
-    BaseLayout.astro
-  /pages
-    index.astro
-    contact.astro
-    mentions-legales.astro
-    404.astro
-  /styles
-    global.css
-/public
-  favicon.svg
-  /images
-astro.config.mjs
-tailwind.config.cjs
-package.json
-tsconfig.json
+Luna Rossa – projet démo fictif
+
+J'ai imaginé un site pour une pizzeria artisanale fictive à Toulouse, afin de montrer ce que je peux proposer aux restaurateurs indépendants.
+Identité visuelle, logo, maquette et développement : tout est pensé comme si c'était un vrai projet client.
+
+Nom : Luna Rossa
+
+Slogan : Pizza artisanale au feu de bois – Toulouse centre
+
+Stack : Astro + Tailwind + déploiement Vercel
+
+Lien démo : https://site-basta-pizzeria.vercel.app
+
+Identité visuelle Luna Rossa
+
+Élément
+
+Valeur
+
+Couleurs
+
+Rouge brique (#C94B4B), crème (#FFF2E3), noir profond (#1F1F1F)
+
+Typo titre
+
+Playfair Display (artisanale, élégante)
+
+Typo texte
+
+Inter / Open Sans
+
+Style visuel
+
+Rustique-chic, napolitain moderne
+
+Iconographie
+
+Four à bois, lune, tomates, feu
+
+🌐 Design & approche graphique
+
+Minimal mais chaleureux
+
+Palette neutre + couleur d'appel (rouge, vert ou corail)
+
+Animation douce (fade, hover)
+
+Sticky header avec CTA "Demander un devis"
+
+Dark mode toggle 🌙
+
+Composants pensés avec Shadcn UI ou Tailwind
+
+🔄 Offres types (sur page /offres)
+
+Formule
+
+Idéal pour
+
+Prix indicatif
+
+Inclut
+
+Essentiel
+
+Présence simple
+
+300–500 €
+
+1 page, contact, photo
+
+Professionnel
+
+Site complet
+
+600–900 €
+
+3 à 5 pages, menu, SEO
+
+Sur-mesure
+
+Besoins spécifiques
+
+Sur devis
+
+Booking, CMS, etc.
+
+Maintenance légère incluse les 30 premiers jours. Modifications ponctuelles sur devis ou abonnement de suivi possible.
+
+🚗 Contact & appel à l'action
+
+Formulaire simple : nom, activité, budget (optionnel), message
+
+Bouton : "Recevoir une proposition sous 48h"
+
+Possibilité de lien WhatsApp ou email direct
+
+📚 FAQ (page /faq)
+
+Est-ce que je peux modifier le site moi-même ?
+
+Oui, si besoin j'intègre une interface simple (CMS léger). Sinon, je m'occupe des modifications.
+
+Est-ce que j'ai besoin d'un abonnement ?
+
+Non. Le site est statique, sans maintenance nécessaire. Aucun coût caché.
+
+Combien de temps pour créer un site ?
+
+Entre 3 et 10 jours selon la formule et les contenus fournis.
+
+Que se passe-t-il si j'ai besoin de modifs plus tard ?
+
+Je propose soit un tarif ponctuel, soit un petit forfait annuel de suivi.
+
+🎯 Pourquoi choisir mes services ?
+
+Performance
+- Sites ultra-rapides (scores Lighthouse > 90)
+- Temps de chargement optimisé
+- Expérience utilisateur fluide
+
+SEO & Visibilité
+- Optimisation SEO intégrée
+- Structure technique optimale
+- Balisage sémantique
+- Compatibilité mobile-first
+
+Sans engagement
+- Pas d'abonnement mensuel
+- Hébergement inclus
+- Pas de frais cachés
+- Transparence totale
+
+Support & Maintenance
+- Support technique réactif
+- Mises à jour régulières
+- Formation à l'utilisation
+- Documentation complète
+
+Accessibilité & Qualité
+- Sites responsifs et accessibles
+- Conformité RGPD
+- Code propre et maintenable
+- Tests approfondis
+
+💰 Nos Formules
+
+Découverte (Site One-Page)
+- 1 page d'accueil complète
+- Formulaire de contact
+- Intégration Google Maps
+- Optimisation SEO basique
+- Design responsive
+- Hébergement inclus
+- Prix : 300-500€
+
+Business (Site Multi-Pages)
+- 3-5 pages personnalisées
+- Blog intégré
+- Galerie photos
+- Optimisation SEO avancée
+- Intégration réseaux sociaux
+- Statistiques de visite
+- Prix : 600-900€
+
+Premium (Fonctionnalités Avancées)
+- Site sur-mesure
+- Système de réservation
+- Espace client
+- Newsletter
+- Multilingue
+- API personnalisée
+- Prix : Sur devis
+
+✨ Nos Engagements
+
+Délais de livraison
+- Découverte : 3-5 jours
+- Business : 7-10 jours
+- Premium : 10-15 jours
+- Respect des deadlines
+- Communication régulière
+
+Support post-livraison
+- 30 jours de support gratuit
+- Corrections mineures incluses
+- Formation à l'utilisation
+- Documentation détaillée
+- Support par email
+
+Garantie de satisfaction
+- 100% satisfait ou remboursé
+- Tests approfondis
+- Validation client
+- Ajustements gratuits
+- Support réactif
+
+Politique de modification
+- Modifications mineures : 50€/h
+- Modifications majeures : sur devis
+- Forfait maintenance : 200€/an
+- Mises à jour régulières
+- Support prioritaire

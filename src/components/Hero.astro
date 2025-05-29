@@ -2,90 +2,129 @@
 interface Props {
   title: string;
   description: string;
-  ctaText?: string;
-  ctaLink?: string;
-  imageSrc?: string;
 }
 
-const { 
-  title = "Bienvenue sur notre site",
-  description = "Découvrez nos services et solutions innovantes",
-  ctaText = "En savoir plus",
-  ctaLink = "/contact",
-  imageSrc = "/images/hero-image.jpg"
-} = Astro.props;
+const { title, description } = Astro.props;
+
+const clients = [
+  {
+    type: "restaurateur",
+    text: "restaurateur",
+    image: "/images/hero/restaurateur.jpg",
+  },
+  {
+    type: "avocat",
+    text: "avocat",
+    image: "/images/hero/avocat.jpg",
+  },
+  {
+    type: "prof_dans_sante",
+    text: "prof de danse",
+    image: "/images/hero/prof_danse.jpg",
+  },
+  {
+    type: "artisan",
+    text: "artisan",
+    image: "/images/hero/artisan.jpg",
+  },
+  {
+    type: "coach_sportif",
+    text: "coach sportif",
+    image: "/images/hero/coach_sportif.jpg",
+  },
+];
 ---
 
-<section class="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 to-indigo-50">
-  <div class="container mx-auto px-4 py-20">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <!-- Content -->
-      <div class="space-y-8">
-        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-          {title}
-        </h1>
-        <p class="text-xl text-gray-600 leading-relaxed">
-          {description}
-        </p>
-        <div class="flex gap-4">
-          <a 
-            href={ctaLink}
-            class="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-          >
-            {ctaText}
-          </a>
-          <a 
-            href="/services"
-            class="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-50 transition-colors border border-blue-600"
-          >
-            Nos services
-          </a>
-        </div>
-      </div>
+<section class="relative h-screen">
+  {clients.map((client, index) => (
+    <div
+      class:list={[
+        "absolute inset-0 transition-opacity duration-1000",
+        index === 0 ? "opacity-100" : "opacity-0"
+      ]}
+      data-client={client.type}
+    >
+      <img
+        src={client.image}
+        alt={`Image pour ${client.text}`}
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+  ))}
 
-      <!-- Image -->
-      <div class="relative">
-        <img 
-          src={imageSrc} 
-          alt="Hero illustration" 
-          class="w-full h-auto rounded-2xl shadow-2xl"
-        />
-        <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-yellow-400 rounded-full opacity-20 blur-2xl"></div>
-        <div class="absolute -top-6 -right-6 w-32 h-32 bg-blue-400 rounded-full opacity-20 blur-2xl"></div>
+  <div class="relative h-full flex items-center px-4">
+    <div class="max-w-2xl ml-8 md:ml-16 lg:ml-24 text-left">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+        Vous êtes <br />
+        <span class="inline-block min-w-[200px] align-middle relative h-[1.2em]">
+          {clients.map((client, index) => (
+            <span
+              class:list={[
+                "absolute left-0 top-0 w-full transition-opacity duration-500 whitespace-nowrap",
+                index === 0 ? "opacity-100" : "opacity-0"
+              ]}
+              style="position: absolute; left: 0; top: 0; width: 100%;"
+              data-client={client.type}
+            >
+              <span class="inline-block bg-white text-black font-bold rounded-lg px-4 py-2 shadow-lg">
+                {client.text}
+              </span>
+            </span>
+          ))}
+        </span>
+        <br />
+        Vous avez besoin d'un site internet ?
+      </h1>
+      <p class="text-xl md:text-2xl text-white/90 mb-8">
+        Votre présence en ligne commence ici. Un site web moderne, rapide et optimisé pour votre activité.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact"
+          class="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+        >
+          Demander un devis
+        </a>
+        <a
+          href="/portfolio"
+          class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+        >
+          Voir mes réalisations
+        </a>
       </div>
     </div>
   </div>
-
-  <!-- Decorative elements -->
-  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-    <div class="absolute top-1/3 right-1/4 w-64 h-64 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-    <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-  </div>
 </section>
 
+<script>
+  const clients = document.querySelectorAll('[data-client]');
+  let currentIndex = 0;
+
+  function updateHero() {
+    // Masquer tous les éléments
+    clients.forEach(client => {
+      client.classList.remove('opacity-100');
+      client.classList.add('opacity-0');
+    });
+
+    // Afficher l'élément courant
+    const currentClient = document.querySelectorAll(`[data-client="${clients[currentIndex].dataset.client}"]`);
+    currentClient.forEach(client => {
+      client.classList.remove('opacity-0');
+      client.classList.add('opacity-100');
+    });
+
+    // Passer à l'élément suivant
+    currentIndex = (currentIndex + 1) % (clients.length / 2);
+  }
+
+  // Changer toutes les 3 secondes
+  setInterval(updateHero, 3000);
+</script>
+
 <style>
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-  .animation-delay-4000 {
-    animation-delay: 4s;
+  [data-client] {
+    transition: opacity 0.5s ease-in-out;
   }
 </style> 

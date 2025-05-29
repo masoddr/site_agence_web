@@ -12,6 +12,7 @@ export interface SiteConfig {
     linkedin?: string;
     facebook?: string;
     instagram?: string;
+    github?: string;
   };
   services: {
     title: string;
@@ -65,62 +66,61 @@ export interface SiteConfig {
 
 // Configuration par défaut
 export const defaultConfig: SiteConfig = {
-  name: "Votre Entreprise",
-  description: "Description de votre entreprise",
+  name: "Massyl Ouaddour",
+  description: "Créateur de sites web performants et accessibles",
   logo: "/images/logo.svg",
   contact: {
-    email: "contact@example.com",
-    phone: "+33 1 23 45 67 89",
-    address: "123 rue Example, 75000 Paris"
+    email: "contact@massylouaddour.com",
+    phone: "+33 6 XX XX XX XX",
+    address: "Toulouse, France"
   },
   social: {
-    twitter: "https://twitter.com",
-    linkedin: "https://linkedin.com",
-    facebook: "https://facebook.com",
-    instagram: "https://instagram.com"
+    twitter: "https://twitter.com/massylouaddour",
+    linkedin: "https://linkedin.com/in/massylouaddour",
+    github: "https://github.com/massylouaddour"
   },
   services: {
-    title: "Nos Services",
-    description: "Découvrez nos services professionnels",
+    title: "Mes Services",
+    description: "Des sites web modernes, rapides et accessibles pour votre entreprise",
     items: [
       {
-        title: "Service 1",
-        description: "Description du service 1",
-        icon: "service-1"
+        title: "Sites Vitrines",
+        description: "Présentez votre activité avec un site web élégant et performant",
+        icon: "🎨"
       },
       {
-        title: "Service 2",
-        description: "Description du service 2",
-        icon: "service-2"
+        title: "Sites E-commerce",
+        description: "Vendez vos produits en ligne avec une boutique optimisée",
+        icon: "🛍️"
       },
       {
-        title: "Service 3",
-        description: "Description du service 3",
-        icon: "service-3"
+        title: "Sites Professionnels",
+        description: "Solutions sur-mesure pour les professions libérales",
+        icon: "💼"
       }
     ]
   },
   testimonials: [
     {
-      name: "Jean Dupont",
-      role: "Client",
-      content: "Excellent service, je recommande !",
-      image: "/images/testimonials/client-1.jpg"
+      name: "Luna Rossa",
+      role: "Pizzeria",
+      content: "Un site magnifique qui met en valeur notre cuisine artisanale. Les clients adorent la facilité de réservation en ligne.",
+      image: "/images/testimonials/luna-rossa.jpg"
     }
   ],
   cta: {
-    title: "Prêt à commencer ?",
-    description: "Contactez-nous dès aujourd'hui",
-    buttonText: "Nous contacter",
+    title: "Prêt à lancer votre projet ?",
+    description: "Contactez-moi pour discuter de votre site web",
+    buttonText: "Demander un devis",
     buttonLink: "/contact"
   },
   location: {
-    title: "Notre Localisation",
-    address: "123 rue Example, 75000 Paris",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615509614!3d48.85837007928757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1647874586708!5m2!1sfr!2sfr"
+    title: "Localisation",
+    address: "Toulouse, France",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.8004846854457!2d1.444209315509614!3d43.60446297912194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x406f69c2f411100!2sToulouse!5e0!3m2!1sfr!2sfr!4v1647874586708!5m2!1sfr!2sfr"
   },
   businessHours: {
-    title: "Horaires d'ouverture",
+    title: "Horaires de travail",
     timezone: "Europe/Paris",
     hours: [
       { day: "Lundi", hours: "9h00 - 18h00" },
@@ -128,52 +128,58 @@ export const defaultConfig: SiteConfig = {
       { day: "Mercredi", hours: "9h00 - 18h00" },
       { day: "Jeudi", hours: "9h00 - 18h00" },
       { day: "Vendredi", hours: "9h00 - 18h00" },
-      { day: "Samedi", hours: "10h00 - 16h00" },
+      { day: "Samedi", hours: "Fermé", isClosed: true },
       { day: "Dimanche", hours: "Fermé", isClosed: true }
     ]
   },
   pricing: {
-    title: "Nos Tarifs",
-    description: "Découvrez nos différentes formules adaptées à vos besoins",
+    title: "Mes Formules",
+    description: "Des solutions adaptées à tous les budgets",
     items: [
       {
-        title: "Formule Basique",
-        price: "À partir de 99€",
-        description: "Idéal pour démarrer",
+        title: "Découverte",
+        price: "300-500€",
+        description: "Site one-page parfait pour démarrer",
         features: [
-          "Fonctionnalité 1",
-          "Fonctionnalité 2",
-          "Fonctionnalité 3"
+          "1 page d'accueil complète",
+          "Formulaire de contact",
+          "Intégration Google Maps",
+          "Optimisation SEO basique",
+          "Design responsive",
+          "Hébergement inclus"
         ],
         ctaText: "Choisir cette formule",
         ctaLink: "/contact"
       },
       {
-        title: "Formule Pro",
-        price: "À partir de 199€",
-        description: "Notre formule la plus populaire",
+        title: "Business",
+        price: "600-900€",
+        description: "Site multi-pages pour une présence complète",
         features: [
-          "Tout de la formule Basique",
-          "Fonctionnalité 4",
-          "Fonctionnalité 5",
-          "Fonctionnalité 6"
+          "3-5 pages personnalisées",
+          "Blog intégré",
+          "Galerie photos",
+          "Optimisation SEO avancée",
+          "Intégration réseaux sociaux",
+          "Statistiques de visite"
         ],
         isPopular: true,
         ctaText: "Choisir cette formule",
         ctaLink: "/contact"
       },
       {
-        title: "Formule Premium",
-        price: "Sur mesure",
-        description: "Solution personnalisée",
+        title: "Premium",
+        price: "Sur devis",
+        description: "Solution sur-mesure avec fonctionnalités avancées",
         features: [
-          "Tout de la formule Pro",
-          "Fonctionnalité 7",
-          "Fonctionnalité 8",
-          "Fonctionnalité 9",
-          "Support prioritaire"
+          "Site sur-mesure",
+          "Système de réservation",
+          "Espace client",
+          "Newsletter",
+          "Multilingue",
+          "API personnalisée"
         ],
-        ctaText: "Nous contacter",
+        ctaText: "Demander un devis",
         ctaLink: "/contact"
       }
     ]

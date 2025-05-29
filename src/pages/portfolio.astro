@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Portfolio | Massyl Ouaddour - Créateur de Sites Web">
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8">Nos Réalisations</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Projet Luna Rossa -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="/images/luna-rossa.jpg" alt="Luna Rossa - Pizzeria" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Luna Rossa</h3>
+          <p class="text-gray-600 mb-4">Pizzeria artisanale à Toulouse</p>
+          <a href="https://site-basta-pizzeria.vercel.app" target="_blank" class="text-blue-600 hover:underline">
+            Voir le site →
+          </a>
+        </div>
+      </div>
+      <!-- Autres projets à ajouter -->
+    </div>
+  </main>
+</BaseLayout> 

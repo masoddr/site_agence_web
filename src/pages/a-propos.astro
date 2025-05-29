@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="À Propos | Massyl Ouaddour - Créateur de Sites Web">
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8">À Propos</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Profil -->
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Mon Parcours</h2>
+        <p class="text-gray-600 mb-6">
+          Je suis Massyl Ouaddour, développeur web passionné par la création de sites web performants et accessibles.
+          Spécialisé dans la stack Astro, je mets mon expertise au service des restaurants, maisons d'hôtes et professions libérales.
+        </p>
+        <p class="text-gray-600">
+          Mon approche combine performance technique et design moderne pour créer des sites web qui répondent parfaitement aux besoins de mes clients.
+        </p>
+      </div>
+
+      <!-- Valeurs -->
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Mes Valeurs</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <span class="text-blue-600 mr-2">✓</span>
+            <span class="text-gray-600">Performance et rapidité</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-600 mr-2">✓</span>
+            <span class="text-gray-600">Accessibilité pour tous</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-600 mr-2">✓</span>
+            <span class="text-gray-600">Transparence dans les tarifs</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-600 mr-2">✓</span>
+            <span class="text-gray-600">Support réactif</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stack Technique -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold mb-4">Ma Stack Technique</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-gray-100 p-4 rounded-lg text-center">
+          <h3 class="font-bold">Astro</h3>
+          <p class="text-sm text-gray-600">Framework moderne</p>
+        </div>
+        <div class="bg-gray-100 p-4 rounded-lg text-center">
+          <h3 class="font-bold">Tailwind CSS</h3>
+          <p class="text-sm text-gray-600">Design responsive</p>
+        </div>
+        <div class="bg-gray-100 p-4 rounded-lg text-center">
+          <h3 class="font-bold">Vercel</h3>
+          <p class="text-sm text-gray-600">Hébergement performant</p>
+        </div>
+        <div class="bg-gray-100 p-4 rounded-lg text-center">
+          <h3 class="font-bold">SEO</h3>
+          <p class="text-sm text-gray-600">Optimisation intégrée</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout> 
