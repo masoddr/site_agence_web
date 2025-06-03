@@ -184,4 +184,32 @@ export const defaultConfig: SiteConfig = {
       }
     ]
   }
+};
+
+export const siteConfig = {
+  name: "Massyl Ouaddour",
+  title: "Massyl Ouaddour - Créateur de Sites Web",
+  description: "Création de sites web performants et accessibles pour les professionnels. Sites vitrines, landing pages, sites multi-pages et solutions sur-mesure.",
+  url: "https://massylouaddour.com",
+  ogImage: "/og-image.jpg",
+  links: {
+    linkedin: "https://linkedin.com/in/massylouaddour",
+    github: "https://github.com/massylouaddour"
+  },
+  keywords: [
+    "création site web",
+    "développeur web",
+    "site vitrine",
+    "landing page",
+    "site professionnel",
+    "web design",
+    "développement web",
+    "SEO",
+    "site responsive",
+    "site accessible"
+  ],
+  author: {
+    name: "Massyl Ouaddour",
+    email: "contact@massylouaddour.com"
+  }
 }; 

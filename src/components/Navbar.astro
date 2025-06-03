@@ -1,27 +1,110 @@
 <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 bg-transparent">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="/" id="navbar-logo" class="text-2xl font-extrabold tracking-tight text-white transition-colors duration-300 select-none">
       Massyl
     </a>
+    <button id="navbar-burger" class="md:hidden ml-auto text-white focus:outline-none z-50" aria-label="Ouvrir le menu">
+      <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    <nav id="navbar-links" class="hidden md:flex gap-6 items-center text-lg font-semibold">
+      <a href="/" class="navbar-link hover:underline transition-colors">Accueil</a>
+      <a href="/prestations" class="navbar-link hover:underline transition-colors">Prestations</a>
+      <a href="/portfolio" class="navbar-link hover:underline transition-colors">Portfolio</a>
+      <a href="/contact" class="navbar-link hover:underline transition-colors">Contact</a>
+    </nav>
+    <!-- Menu mobile -->
+    <div id="navbar-mobile-menu" class="fixed inset-0 bg-black flex flex-col items-center justify-center gap-8 text-2xl font-bold text-white z-[9999] transition-all duration-500 opacity-0 translate-y-8 pointer-events-none md:hidden">
+      <button id="navbar-close" class="absolute top-6 right-6 text-white text-4xl focus:outline-none" aria-label="Fermer le menu">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M6 6l12 12M6 18L18 6" />
+        </svg>
+      </button>
+      <a href="/" class="navbar-link" onclick="closeMenu()">Accueil</a>
+      <a href="/prestations" class="navbar-link" onclick="closeMenu()">Prestations</a>
+      <a href="/portfolio" class="navbar-link" onclick="closeMenu()">Portfolio</a>
+      <a href="/contact" class="navbar-link" onclick="closeMenu()">Contact</a>
+    </div>
   </div>
 </nav>
+
+<style>
+  .navbar-link {
+    color: white;
+    transition: color 0.3s;
+  }
+  .navbar-scrolled .navbar-link {
+    color: black;
+  }
+  #navbar-mobile-menu {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(2rem);
+  }
+  #navbar-mobile-menu.opacity-100 {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+</style>
 
 <script>
   if (typeof window !== 'undefined') {
     const navbar = document.getElementById('navbar');
     const logo = document.getElementById('navbar-logo');
+    const links = document.querySelectorAll('.navbar-link');
+    const burger = document.getElementById('navbar-burger');
+    const mobileMenu = document.getElementById('navbar-mobile-menu');
+    const closeBtn = document.getElementById('navbar-close');
+    let menuOpen = false;
+
+    function openMenu() {
+      mobileMenu.classList.add('opacity-100', 'translate-y-0');
+      mobileMenu.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-8');
+      document.body.style.overflow = 'hidden';
+      menuOpen = true;
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+      mobileMenu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-8');
+      document.body.style.overflow = '';
+      menuOpen = false;
+    }
+    burger.addEventListener('click', () => {
+      if (menuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    closeBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
     window.addEventListener('scroll', () => {
       if (window.scrollY > 10) {
-        navbar.classList.add('bg-white', 'shadow-md');
+        navbar.classList.add('bg-white', 'shadow-md', 'navbar-scrolled');
         navbar.classList.remove('bg-transparent');
         logo.classList.remove('text-white');
         logo.classList.add('text-black');
+        burger.classList.remove('text-white');
+        burger.classList.add('text-black');
+        closeBtn.classList.remove('text-white');
+        closeBtn.classList.add('text-black');
       } else {
-        navbar.classList.remove('bg-white', 'shadow-md');
+        navbar.classList.remove('bg-white', 'shadow-md', 'navbar-scrolled');
         navbar.classList.add('bg-transparent');
         logo.classList.remove('text-black');
         logo.classList.add('text-white');
+        burger.classList.remove('text-black');
+        burger.classList.add('text-white');
+        closeBtn.classList.remove('text-black');
+        closeBtn.classList.add('text-white');
       }
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) closeMenu();
     });
   }
 </script> 

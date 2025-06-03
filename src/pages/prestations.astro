@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const prestations = [
+  {
+    icon: "📄",
+    titre: "Landing Page",
+    slug: "landing-page",
+    prix: "À partir de 350€ HT",
+    description: "Une page unique, percutante et optimisée pour convertir vos visiteurs en clients. Idéal pour lancer un produit, un service ou une campagne marketing.",
+    pourquoi: "Le tarif inclut la conception sur-mesure, l'intégration, l'optimisation SEO de base et la mise en ligne. C'est la solution la plus rapide pour une présence web efficace.",
+    cible: "Entrepreneurs, événements, campagnes marketing"
+  },
+  {
+    icon: "🏪",
+    titre: "Site Vitrine",
+    slug: "site-vitrine",
+    prix: "À partir de 700€ HT",
+    description: "Présentez votre activité, vos valeurs et vos réalisations sur un site professionnel de 3 à 5 pages.",
+    pourquoi: "Ce tarif comprend la création de plusieurs pages, un design personnalisé, l'intégration de vos contenus, le SEO, et un accompagnement personnalisé.",
+    cible: "Artisans, commerçants, professions libérales, TPE/PME"
+  },
+  {
+    icon: "📚",
+    titre: "Site Multi-pages évolué",
+    slug: "site-multi-pages",
+    prix: "À partir de 1200€ HT",
+    description: "Un site complet avec blog, FAQ, témoignages, pages services détaillées, formulaire avancé, etc.",
+    pourquoi: "Le prix reflète la complexité, le nombre de pages, les fonctionnalités avancées et l'intégration de modules spécifiques.",
+    cible: "Entreprises, associations, indépendants avec plusieurs offres"
+  },
+  {
+    icon: "⚙️",
+    titre: "Site sur-mesure & fonctionnalités avancées",
+    slug: "site-sur-mesure",
+    prix: "Sur devis",
+    description: "Réservation en ligne, espace membre, paiement, agenda, modules personnalisés... Je développe des solutions adaptées à vos besoins spécifiques.",
+    pourquoi: "Chaque projet sur-mesure fait l'objet d'une étude personnalisée pour répondre précisément à vos besoins et à votre budget.",
+    cible: "Structures avec besoins spécifiques"
+  },
+  {
+    icon: "🔄",
+    titre: "Refonte de site existant",
+    slug: "refonte-site",
+    prix: "À partir de 600€ HT",
+    description: "Modernisez votre site actuel pour booster votre image, votre référencement et votre sécurité.",
+    pourquoi: "Le tarif inclut l'audit, la modernisation graphique, l'optimisation technique et la migration éventuelle.",
+    cible: "Entreprises et indépendants déjà en ligne"
+  },
+  {
+    icon: "🔧",
+    titre: "Maintenance & accompagnement",
+    slug: "maintenance",
+    prix: "Forfait à partir de 200€ HT/an",
+    description: "Mises à jour, sauvegardes, support technique, évolutions mineures : restez serein au quotidien.",
+    pourquoi: "Ce forfait couvre le suivi, la sécurité, les sauvegardes et l'assistance technique pour garantir la pérennité de votre site.",
+    cible: "Tous les clients"
+  },
+  {
+    icon: "✨",
+    titre: "Options complémentaires",
+    slug: "options",
+    prix: "Sur devis",
+    description: "Rédaction SEO, création de logo, photo pro, gestion Google My Business, formation à l'utilisation du site.",
+    pourquoi: "Chaque option est chiffrée selon vos besoins et le temps de réalisation estimé.",
+    cible: "Sur demande"
+  }
+];
+---
+
+<BaseLayout title="Prestations | Massyl Ouaddour - Créateur de Sites Web">
+  <main class="container mx-auto px-4 py-20">
+    <h1 class="text-4xl md:text-5xl font-extrabold uppercase text-center mb-2 tracking-tight">Prestations</h1>
+    <p class="text-lg text-gray-700 text-center mb-12">Des solutions adaptées à chaque besoin, pour tous les professionnels</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {prestations.map((p, i) => (
+        <div class="bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">{p.icon}</div>
+          <div class="text-xl font-bold mb-1">{p.titre}</div>
+          <div class="text-lg font-semibold text-blue-700 mb-2">{p.prix}</div>
+          <div class="text-gray-600 mb-2">{p.description}</div>
+          <div class="text-xs text-gray-400 italic mb-4">{p.cible}</div>
+          <details class="w-full mb-2 group">
+            <summary class="cursor-pointer text-sm text-blue-700 font-semibold flex items-center justify-center gap-2 select-none group-open:underline">
+              Pourquoi ce tarif ?
+              <span class="text-lg">+</span>
+            </summary>
+            <div class="mt-2 text-gray-600 text-sm bg-gray-50 rounded p-3">{p.pourquoi}</div>
+          </details>
+          <a href={`/prestations-details#${p.slug}`} class="inline-block mt-2 text-sm text-white bg-blue-700 hover:bg-blue-800 font-semibold px-4 py-2 rounded transition-colors">Plus de détails</a>
+        </div>
+      ))}
+    </div>
+  </main>
+</BaseLayout> 

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const details = [
+  {
+    slug: "landing-page",
+    titre: "Landing Page",
+    icon: "📄",
+    contenu: `
+      <ul class="list-disc pl-6 mb-4">
+        <li>Conception d'une page unique, design sur-mesure</li>
+        <li>Accroche, présentation, call-to-action, formulaire de contact</li>
+        <li>Optimisation SEO de base (balises, rapidité, mobile)</li>
+        <li>Intégration de vos contenus (textes, images, logo)</li>
+        <li>Mise en ligne et accompagnement</li>
+      </ul>
+      <p class="text-gray-700">Idéal pour : lancement de produit, événement, campagne marketing, validation d'idée.</p>
+    `
+  },
+  {
+    slug: "site-vitrine",
+    titre: "Site Vitrine",
+    icon: "🏪",
+    contenu: `
+      <ul class="list-disc pl-6 mb-4">
+        <li>3 à 5 pages (Accueil, À propos, Services, Réalisations, Contact...)</li>
+        <li>Design personnalisé, responsive et accessible</li>
+        <li>Optimisation SEO, formulaire de contact, galerie photos</li>
+        <li>Accompagnement à la rédaction et à la mise en ligne</li>
+      </ul>
+      <p class="text-gray-700">Idéal pour : artisans, commerçants, professions libérales, TPE/PME.</p>
+    `
+  },
+  {
+    slug: "site-multi-pages",
+    titre: "Site Multi-pages évolué",
+    icon: "📚",
+    contenu: `
+      <ul class="list-disc pl-6 mb-4">
+        <li>Jusqu'à 10 pages, blog, FAQ, témoignages, pages services détaillées</li>
+        <li>Fonctionnalités avancées (formulaires, modules, intégrations)</li>
+        <li>Optimisation SEO avancée, statistiques de visite</li>
+        <li>Formation à l'utilisation du site</li>
+      </ul>
+      <p class="text-gray-700">Idéal pour : entreprises, associations, indépendants avec plusieurs offres.</p>
+    `
+  },
+  {
+    slug: "site-sur-mesure",
+    titre: "Site sur-mesure & fonctionnalités avancées",
+    icon: "⚙️",
+    contenu: `
+      <ul class="list-disc pl-6 mb-4">
+        <li>Développement de modules personnalisés (réservation, espace membre, paiement...)</li>
+        <li>Intégration d'API, automatisations, fonctionnalités spécifiques</li>
+        <li>Accompagnement sur-mesure, cahier des charges, suivi projet</li>
+      </ul>
+      <p class="text-gray-700">Idéal pour : besoins spécifiques, digitalisation de process, automatisation.</p>
+    `
+  },
+  {
+    slug: "refonte-site",
+    titre: "Refonte de site existant",
+    icon: "🔄",
+    contenu: `
+      <ul class="list-disc pl-6 mb-4">
+        <li>Audit du site existant, recommandations d'amélioration</li>
+        <li>Modernisation graphique, optimisation technique et SEO</li>
+        <li>Mise en conformité RGPD, sécurité, migration si besoin</li>
+      </ul>
+      <p class="text-gray-700">Idéal pour : sites obsolètes, besoin de modernisation ou d'amélioration du référencement.</p>
+    `
+  },
+  {
+    slug: "maintenance",
+    titre: "Maintenance & accompagnement",
+    icon: "🔧",
+    contenu: `
+      <ul class="list-disc pl-6 mb-4">
+        <li>Mises à jour régulières, sauvegardes, monitoring</li>
+        <li>Support technique, évolutions mineures, assistance</li>
+        <li>Conseils pour faire évoluer votre site</li>
+      </ul>
+      <p class="text-gray-700">Idéal pour : rester serein, garantir la sécurité et la pérennité de votre site.</p>
+    `
+  },
+  {
+    slug: "options",
+    titre: "Options complémentaires",
+    icon: "✨",
+    contenu: `
+      <ul class="list-disc pl-6 mb-4">
+        <li>Rédaction de contenu optimisé SEO</li>
+        <li>Création de logo, identité visuelle</li>
+        <li>Photographie professionnelle</li>
+        <li>Gestion Google My Business</li>
+        <li>Formation à l'utilisation du site</li>
+      </ul>
+      <p class="text-gray-700">Idéal pour : compléter votre projet web et maximiser votre visibilité.</p>
+    `
+  }
+];
+---
+
+<BaseLayout title="Détails des prestations | Massyl Ouaddour - Créateur de Sites Web">
+  <main class="container mx-auto px-4 py-20">
+    <h1 class="text-4xl md:text-5xl font-extrabold uppercase text-center mb-2 tracking-tight">Détails des prestations</h1>
+    <p class="text-lg text-gray-700 text-center mb-12">Découvrez ce qui est inclus dans chaque offre</p>
+    <div class="max-w-3xl mx-auto flex flex-col gap-16">
+      {details.map((d) => (
+        <section id={d.slug} class="bg-white rounded-2xl p-8 shadow-sm">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-3xl">{d.icon}</span>
+            <h2 class="text-2xl font-bold">{d.titre}</h2>
+          </div>
+          <div class="prose max-w-none" set:html={d.contenu}></div>
+        </section>
+      ))}
+    </div>
+  </main>
+</BaseLayout> 

@@ -1,16 +1,25 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config/site';
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string;
+  noindex?: boolean;
 }
 
 const { 
-  title = "Mon Site Web",
-  description = "Un site web moderne créé avec Astro"
+  title = siteConfig.title,
+  description = siteConfig.description,
+  image = siteConfig.ogImage,
+  canonicalURL = Astro.url.href,
+  noindex = false
 } = Astro.props;
+
+const canonical = new URL(canonicalURL, siteConfig.url).toString();
 ---
 
 <!DOCTYPE html>
@@ -23,18 +32,28 @@ const {
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={siteConfig.keywords.join(', ')}" />
+    <meta name="author" content={siteConfig.author.name}" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Robots -->
+    <meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow"} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image" content={new URL(image, siteConfig.url).toString()} />
+    <meta property="og:site_name" content={siteConfig.name} />
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, siteConfig.url).toString()} />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,6 +65,20 @@ const {
     
     <!-- Global CSS -->
     <link rel="stylesheet" href="/styles/global.css" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": siteConfig.author.name,
+      "url": siteConfig.url,
+      "jobTitle": "Développeur Web",
+      "sameAs": [
+        siteConfig.links.linkedin,
+        siteConfig.links.github
+      ],
+      "email": siteConfig.author.email
+    })} />
   </head>
   <body class="font-sans antialiased">
     <Navbar />
