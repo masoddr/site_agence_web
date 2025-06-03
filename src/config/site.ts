@@ -35,11 +35,6 @@ export interface SiteConfig {
     buttonText: string;
     buttonLink: string;
   };
-  location: {
-    title: string;
-    address: string;
-    mapUrl: string;
-  };
   businessHours: {
     title: string;
     timezone: string;
@@ -113,11 +108,6 @@ export const defaultConfig: SiteConfig = {
     description: "Contactez-moi pour discuter de votre site web",
     buttonText: "Demander un devis",
     buttonLink: "/contact"
-  },
-  location: {
-    title: "Localisation",
-    address: "Toulouse, France",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.8004846854457!2d1.444209315509614!3d43.60446297912194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x406f69c2f411100!2sToulouse!5e0!3m2!1sfr!2sfr!4v1647874586708!5m2!1sfr!2sfr"
   },
   businessHours: {
     title: "Horaires de travail",

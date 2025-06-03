@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
-import Map from '../components/Map.astro';
+
 import Footer from '../components/Footer.astro';
 import Realisations from '../components/Realisations.astro';
 import Faq from '../components/Faq.astro';
@@ -12,8 +12,78 @@ import { defaultConfig } from '../config/site';
 
 <BaseLayout title="Accueil | Massyl Ouaddour - Créateur de Sites Web">
 	<Hero title="Création de Sites Web" description="Création de Sites Web" />
+
+	<!-- Arrière-plan décoratif avec images et parallax -->
+	<div aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none select-none">
+		<img
+			src="/images/bg-mesh-1.png"
+			alt="Décor mesh bleu"
+			data-parallax
+			class="absolute top-[-8%] left-[-10%] w-[60vw] max-w-[600px] opacity-50 blur-2xl"
+			style="z-index:0;"
+		/>
+		<img
+			src="/images/bg-mesh-2.png"
+			alt="Décor mesh violet"
+			data-parallax
+			class="absolute bottom-[-10%] right-[-10%] w-[50vw] max-w-[500px] opacity-40 blur-2xl"
+			style="z-index:0;"
+		/>
+	</div>
+
+	<!-- Section résumé du process animée -->
+	<section class="max-w-4xl mx-auto py-16 px-4">
+		<h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Comment ça se passe&nbsp;?</h2>
+		<div id="process-steps" class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+			<div class="flex flex-col items-center opacity-0 translate-y-8 transition-all duration-700" data-step>
+				<div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-2xl mb-2">📞</div>
+				<div class="font-semibold text-blue-700 mb-1">1. Contact</div>
+				<p class="text-xs text-gray-600 text-center">Échange sur vos besoins</p>
+			</div>
+			<div class="flex flex-col items-center opacity-0 translate-y-8 transition-all duration-700" data-step>
+				<div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-2xl mb-2">🖌️</div>
+				<div class="font-semibold text-blue-700 mb-1">2. Maquette</div>
+				<p class="text-xs text-gray-600 text-center">Maquette personnalisée</p>
+			</div>
+			<div class="flex flex-col items-center opacity-0 translate-y-8 transition-all duration-700" data-step>
+				<div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-2xl mb-2">⚡</div>
+				<div class="font-semibold text-blue-700 mb-1">3. Développement</div>
+				<p class="text-xs text-gray-600 text-center">Site rapide & optimisé</p>
+			</div>
+			<div class="flex flex-col items-center opacity-0 translate-y-8 transition-all duration-700" data-step>
+				<div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-2xl mb-2">🚀</div>
+				<div class="font-semibold text-blue-700 mb-1">4. Mise en ligne</div>
+				<p class="text-xs text-gray-600 text-center">Accompagnement & suivi</p>
+			</div>
+		</div>
+		<div class="flex justify-center">
+			<a href="/processus" class="inline-block bg-blue-700 text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-blue-800 transition-colors">En savoir plus sur le process</a>
+		</div>
+	</section>
+
 	<Realisations />
 	<Offres />
 	<Faq />
-	<Map />
 </BaseLayout>
+
+<script>
+	// Animation d'apparition en cascade
+	if (typeof window !== 'undefined') {
+		// Parallax
+		const parallaxEls = document.querySelectorAll('[data-parallax]');
+		window.addEventListener('scroll', () => {
+			const scrollY = window.scrollY;
+			parallaxEls.forEach((el, i) => {
+				el.style.transform = `translateY(${scrollY * (0.12 + i * 0.07)}px)`;
+			});
+		});
+		// Animation process steps
+		const steps = document.querySelectorAll('[data-step]');
+		steps.forEach((step, i) => {
+			setTimeout(() => {
+				step.classList.remove('opacity-0', 'translate-y-8');
+				step.classList.add('opacity-100', 'translate-y-0');
+			}, 200 + i * 200);
+		});
+	}
+</script>

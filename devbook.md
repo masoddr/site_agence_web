@@ -115,7 +115,7 @@ Palette neutre + couleur d'appel (rouge, vert ou corail)
 
 Animation douce (fade, hover)
 
-Sticky header avec CTA "Demander un devis"
+Sticky header avec CTA "Demander un devis gratuit"
 
 Dark mode toggle 🌙
 

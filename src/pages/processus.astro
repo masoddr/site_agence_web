@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const steps = [
+  {
+    number: 1,
+    title: 'Prise de contact',
+    icon: '📞',
+    description: "On échange sur vos besoins, vos objectifs et vos envies. Je vous conseille sur la solution la plus adaptée à votre activité."
+  },
+  {
+    number: 2,
+    title: 'Maquette personnalisée',
+    icon: '🖌️',
+    description: "Je réalise une maquette sur-mesure, fidèle à votre image, que vous validez avant le développement."
+  },
+  {
+    number: 3,
+    title: 'Développement rapide',
+    icon: '⚡',
+    description: "Je développe votre site avec les meilleures technologies web, en optimisant la rapidité, le SEO et l'accessibilité."
+  },
+  {
+    number: 4,
+    title: 'Mise en ligne & suivi',
+    icon: '🚀',
+    description: "Votre site est mis en ligne, vous êtes accompagné pour la prise en main, et je reste disponible pour le suivi et la maintenance."
+  }
+];
+---
+
+<BaseLayout title="Le Processus de Création" description="Découvrez les 4 étapes clés pour la création de votre site web professionnel.">
+  <section class="max-w-2xl mx-auto py-16 px-4">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">Le process en 4 étapes</h1>
+    <p class="text-center text-lg text-gray-600 mb-12">Un accompagnement simple, humain et efficace pour un site web à votre image.</p>
+    <ol class="relative border-l-2 border-blue-200">
+      {steps.map(step => (
+        <li class="mb-8 ml-6 flex items-start">
+          <span class="absolute -left-5 flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full text-2xl border-2 border-blue-300">{step.icon}</span>
+          <div>
+            <div class="font-bold text-blue-700">{step.title}</div>
+            <div class="text-xs text-gray-600">{step.description}</div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout> 
