@@ -1,0 +1,49 @@
+---
+const offres = [
+  {
+    icon: "🚀",
+    titre: "Sites ultra-rapides",
+    description: "Des sites performants, notés 90+ sur Lighthouse, pour une expérience utilisateur optimale."
+  },
+  {
+    icon: "🔍",
+    titre: "SEO intégré",
+    description: "Optimisation technique et sémantique pour un meilleur référencement sur Google."
+  },
+  {
+    icon: "📱",
+    titre: "Responsive & accessible",
+    description: "Un affichage parfait sur mobile, tablette et desktop, accessible à tous."
+  },
+  {
+    icon: "💡",
+    titre: "Conseil & accompagnement",
+    description: "Un interlocuteur unique, à l'écoute, pour vous guider à chaque étape."
+  },
+  {
+    icon: "🔒",
+    titre: "Sans abonnement",
+    description: "Aucun coût caché, pas d'engagement mensuel, vous êtes propriétaire de votre site."
+  },
+  {
+    icon: "🛠️",
+    titre: "Maintenance & support",
+    description: "Support réactif et options de maintenance pour garder votre site à jour."
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-10">CE QUE J'OFFRE</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {offres.map((offre) => (
+        <div class="bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">{offre.icon}</div>
+          <div class="text-xl font-bold mb-2">{offre.titre}</div>
+          <div class="text-gray-600">{offre.description}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 
