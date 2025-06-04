@@ -39,7 +39,7 @@ const realisations = [
     titre: "CINEPHORIA",
     ville: "Toulouse",
     client: "Cinéma",
-    description: "Toutes les séances de cinéma de la ville de Toulouse",
+    description: "Toutes les séances cinéma de Toulouse",
     url: "https://cinephoria.fr/"
   },
   {
@@ -63,29 +63,61 @@ const realisations = [
 
 <BaseLayout title="Mes réalisations | Massyl Ouaddour - Créateur de Sites Web">
   <div class="relative min-h-screen">
-    <img src="/images/realisations/bg.jpg" alt="Fond portfolio" class="absolute inset-0 w-full h-full object-cover" />
-    <div class="absolute inset-0 bg-black/60"></div>
+    <!-- Fond fixe -->
+    <img src="/images/realisations/bg.jpg" alt="Fond portfolio" class="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none select-none" style="top:0; left:0;" />
+    <div class="fixed inset-0 bg-black/60 z-0 pointer-events-none select-none" style="top:0; left:0;"></div>
     <main class="relative z-10 container mx-auto px-4 py-20">
       <h1 class="text-4xl md:text-5xl font-extrabold uppercase text-center mb-2 tracking-tight text-white">Mes réalisations</h1>
       <p class="text-lg text-gray-100 text-center mb-12">Découvrez quelques-unes de mes réalisations récentes</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {realisations.map((r) => (
-          <div class="bg-white rounded-2xl overflow-hidden flex flex-col">
+      <div id="parallax-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
+        {realisations.map((r, i) => (
+          <div class="bg-white overflow-hidden flex flex-col h-full parallax-card" data-parallax-card>
             <a href={r.url} target="_blank" rel="noopener" class="relative group block">
-              <img src={r.image} alt={r.titre} class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img src={r.image} alt={r.titre} class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-300" />
             </a>
-            <div class="p-6 flex-1 flex flex-col justify-between">
-              <div class="text-2xl font-extrabold uppercase mb-2 tracking-wide text-gray-900">{r.titre}</div>
-              <div class="mb-2 flex items-center gap-2">
-                <span class="text-sm text-gray-500">{r.ville}</span>
-                <span class="text-xs text-gray-400">•</span>
-                <span class="text-sm text-gray-500">{r.client}</span>
+            <div class="p-6 flex flex-col flex-1 justify-between">
+              <div>
+                <div class="text-2xl font-extrabold uppercase mb-2 tracking-wide text-gray-900">{r.titre}</div>
+                <div class="mb-2 flex items-center gap-2">
+                  <span class="text-sm text-gray-500">{r.ville}</span>
+                  <span class="text-xs text-gray-400">•</span>
+                  <span class="text-sm text-gray-500">{r.client}</span>
+                </div>
               </div>
-              <div class="text-gray-700 text-base mb-4 whitespace-pre-line">{r.description}</div>
+              <div class="text-gray-700 text-base mt-4 whitespace-pre-line">{r.description}</div>
             </div>
           </div>
         ))}
       </div>
     </main>
   </div>
-</BaseLayout> 
+</BaseLayout>
+
+<script>
+  // Parallax sur les cards
+  if (typeof window !== 'undefined') {
+    const cards = document.querySelectorAll('[data-parallax-card]');
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      const isMobile = window.innerWidth < 768;
+      cards.forEach((card, i) => {
+        // Parallax réduit sur mobile, et clampé pour éviter le chevauchement
+        const base = isMobile ? 0.02 : 0.08;
+        const factor = isMobile ? 0.01 : 0.03;
+        let translate = scrollY * (base + (i % 3) * factor);
+        translate = Math.min(translate, 60); // Clamp à 60px max
+        (card instanceof HTMLElement) && (card.style.transform = `translateY(${translate}px)`);
+      });
+    }
+    window.addEventListener('scroll', updateParallax);
+    window.addEventListener('resize', updateParallax);
+    updateParallax();
+  }
+</script>
+
+<style>
+  /* Pour éviter que le contenu ne passe sous le footer */
+  main {
+    min-height: 80vh;
+  }
+</style> 

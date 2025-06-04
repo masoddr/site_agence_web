@@ -3,7 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Contact | Massyl Ouaddour - Créateur de Sites Web">
-  <main class="container mx-auto px-4 py-20">
+  <div class="fixed inset-0 z-0 pointer-events-none select-none">
+    <img src="/images/realisations/bg.jpg" alt="Fond portfolio" class="absolute inset-0 w-full h-full object-cover" style="z-index:0;" />
+    <div class="absolute inset-0 bg-black/60"></div>
+  </div>
+  <main class="container mx-auto px-4 py-20 relative z-10">
     <h1 class="text-4xl md:text-5xl font-extrabold mb-8 text-center">Contact</h1>
     <div class="max-w-xl mx-auto bg-white rounded-2xl p-8 shadow flex flex-col gap-6">
       <div>
